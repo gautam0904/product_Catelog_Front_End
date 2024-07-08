@@ -1,0 +1,15 @@
+<div class="container full-height d-flex justify-content-center align-items-center">
+    <div class="col-md-6 w-25 login-form" >
+        <div class="card">
+            <div class="login">
+                <form class="form" [formGroup]="loginform" (ngSubmit)="onsubmit()">
+                    <label for="chk" aria-hidden="true">Log in</label>
+                    <input class="form-control" type="email" formControlName="email" placeholder="Email" required="">
+                    <input class="form-control" type="password" formControlName="password" placeholder="Password" required="">
+                    <a routerLink="/auth/signup">Create an account</a>
+                    <button class="btn btn-primary" type="submit">Log in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container full-height d-flex justify-content-center align-items-center">
+    <div class="col-md-6 w-25 login-form">
+        <div class="card">
+            <div class="register">
+                <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <button *ngIf="isedit" type="button" class="ms-auto mt-3 border-0 rounded" data-bs-dismiss="modal" aria-label="Close"><i class="pi pi-times"></i></button>
+                    <label class="fs-5 fw-5" for="chk" aria-hidden="true" *ngIf="!isedit">Register</label>
+                    
+                    <label style="margin-top: 0;" aria-hidden="true" *ngIf="isedit">Edit Your Profile</label>
+
+                    <input class="form-control" for="name" type="text" formControlName="name" placeholder="Name" required="">
+
+                    <input class="form-control" for="email" type="email" formControlName="email" placeholder="Email" required="">
+
+                    <input class="form-control" for="password" type="password" formControlName="password" placeholder="Password" required="">
+                    <input type="file" class="form-control input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="onFileSelected($event)" accept="image/*" formControlName="profilepic" placeholder="Hello" required>
+
+                    <a routerLink="/auth">Already have an account</a>
+
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
