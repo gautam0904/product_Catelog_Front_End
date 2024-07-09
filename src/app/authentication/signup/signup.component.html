@@ -4,20 +4,42 @@
             <div class="register">
                 <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                     <button *ngIf="isedit" type="button" class="ms-auto mt-3 border-0 rounded" data-bs-dismiss="modal" aria-label="Close"><i class="pi pi-times"></i></button>
-                    <label class="fs-5 fw-5" for="chk" aria-hidden="true" *ngIf="!isedit">Register</label>
+                    <label class="fs-1 fw-1" for="chk" aria-hidden="true" *ngIf="!isedit">Register</label>
                     
                     <label style="margin-top: 0;" aria-hidden="true" *ngIf="isedit">Edit Your Profile</label>
 
-                    <input class="form-control" for="name" type="text" formControlName="name" placeholder="Name" required="">
+                    <input [ngClass]="{'form-control':true , 'border-danger': signupForm.get('name')?.invalid && signupForm.get('name')?.touched}" for="name" type="text" formControlName="name" placeholder="Name" required="">
 
-                    <input class="form-control" for="email" type="email" formControlName="email" placeholder="Email" required="">
+                    <div class="text-danger" *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+                        Name is required and must contain only alphabetical characters.
+                    </div>
 
-                    <input class="form-control" for="password" type="password" formControlName="password" placeholder="Password" required="">
-                    <input type="file" class="form-control input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="onFileSelected($event)" accept="image/*" formControlName="profilepic" placeholder="Hello" required>
+                    <input [ngClass]="{'form-control': true , 'border-danger' : signupForm.get('email')?.invalid && signupForm.get('email')?.touched}" for="email" type="email" formControlName="email" placeholder="Email" required="">
 
-                    <a routerLink="/auth">Already have an account</a>
+                    <div class="text-danger" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                        Email is required and must be a valid email address.
+                    </div>
 
-                    <button class="btn btn-primary" type="submit">Register</button>
+                    <input *ngIf="!isedit" [ngClass]="{'form-control' : true , 'border-danger' : signupForm.get('password')?.invalid && signupForm.get('password')?.touched}" for="password" type="password" formControlName="password" placeholder="Password" required="">
+
+                    <div class="text-danger" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                        Password is required.
+                    </div>
+
+                    <img *ngIf="isedit" [src]="profile?.profilePicture" height="200">
+
+                    <input type="file" [ngClass]="{'form-control' : true , 'border-danger' : !isedit && signupForm.get('profilePicture')?.invalid && signupForm.get('profilePicture')?.touched}" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="onFileSelected($event)" accept="image/*" formControlName="profilePicture" required>
+                    <div *ngIf="!isedit">
+                        <div class="text-danger" *ngIf="signupForm.get('profilePicture')?.invalid && signupForm.get('profilePicture')?.touched">
+                            Profile Picture is required.
+                        </div>
+                    </div>
+                    
+
+                    <a *ngIf="!isedit" routerLink="/auth">Already have an account</a>
+
+                    <button *ngIf="!isedit" class="btn btn-primary" type="submit">Register</button>
+                    <button *ngIf="isedit" class="btn btn-primary" type="button" (click)="onupdate()">Update</button>
                 </form>
             </div>
         </div>

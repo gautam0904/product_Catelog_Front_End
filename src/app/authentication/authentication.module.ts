@@ -20,6 +20,9 @@ import { SharedModule } from 'primeng/api';
     ReactiveFormsModule,
     ToastModule,
     SharedModule
+  ],
+  exports:[
+    SignupComponent
   ]
 })
 export class AuthenticationModule { }

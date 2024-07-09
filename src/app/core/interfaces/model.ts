@@ -3,13 +3,13 @@ export interface IUser {
     name: string;
     email: string;
     password: string;
-    profilepic : string;
+    profilePicture : string;
     role: string;
     createdAt : string;
 }
 
 export interface Iproduct{
-    id? : string,
+    _id : string,
     name: string,
     description : string, 
     productimage : string,
@@ -20,7 +20,7 @@ export interface Iproduct{
 }
 
 export interface Icategory {
-    id? : string,
+    _id? : string,
     name: string,
     description : string,
 }

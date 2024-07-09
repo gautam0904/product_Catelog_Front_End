@@ -31,10 +31,8 @@ export class BaseURLInterceptor implements HttpInterceptor {
     
     return next.handle(modifiedRequest).pipe(
       catchError((err: HttpErrorResponse) => {
-        console.log('this log isn\'t');
         if (err.status === 401) {
           router.navigate(['/auth/login'])
-            console.log('Unauthorized');
         }
         return throwError(() => err);
       })

@@ -1,0 +1,31 @@
+<div class="container full-height d-flex justify-content-center align-items-center">
+    <div class="col-md-6 w-25 login-form">
+        <div class="card">
+            <div class="register">
+                <form class="form" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+                    <button *ngIf="isedit" type="button" class="ms-auto mt-3 border-0 rounded" data-bs-dismiss="modal" aria-label="Close"><i class="pi pi-times"></i></button>
+                    <label class="fs-1 fw-1" for="chk" aria-hidden="true" *ngIf="!isedit">Category</label>
+                    
+                    <label style="margin-top: 0;" aria-hidden="true" *ngIf="isedit">Edit Your Category</label>
+
+                    <input [ngClass]="{'form-control':true , 'border-danger': categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched}" for="name" type="text" formControlName="name" placeholder="Name" required="">
+
+                    <div class="text-danger" *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
+                        Category Name is required and must contain only alphabetical characters.
+                    </div>
+
+                    <input [ngClass]="{'form-control':true , 'border-danger': categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched}" for="description" type="text" formControlName="description" placeholder="Description" required="">
+
+                    <div class="text-danger" *ngIf="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched">
+                        Category Description is required and must contain only alphabetical characters.
+                    </div>
+
+                    <button *ngIf="!isedit" class="btn btn-primary" type="submit">Add product</button>
+                    <button *ngIf="isedit" class="btn btn-primary" type="button" (click)="onupdate()">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

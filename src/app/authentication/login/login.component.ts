@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
     });
 
   }
-  onsubmit():void{
-
+  onsubmit():void{    
     if (this.loginform.valid) {
       this.auth.login(this.loginform.value).subscribe({
         next : (resdata : any) => {
@@ -51,7 +50,6 @@ export class LoginComponent implements OnInit {
           }
         },
         error : (res) => {
-          console.log(res);
           
           Swal.fire({
             icon: "error",
