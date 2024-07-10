@@ -1,1 +1,30 @@
-<p>category works!</p>
+<div class="row justify-content-center">
+    <button routerLink="/page/addcategory" class="btn btn-primary"> Add Category</button>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Category Name </th>
+                        <th style="width: 75%;">Description</th>
+                        <th style="width: 10%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cate of categories">
+                        <td>{{ cate.name }}</td>
+                        <td>{{ cate.description }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning m-2" [routerLink]="['/page/addcategory']"
+                                [queryParams]="{isedit : true}" (click)="editCategory(cate)">Edit</button>
+                            <button class="btn btn-sm btn-danger m-2" (click)="deleteCategory(cate._id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

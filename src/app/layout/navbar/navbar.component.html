@@ -5,10 +5,17 @@
             <a [routerLink]="['/auth/signup']" [queryParams]="{isedit : true}"><img class="profilepic"
                     data-bs-toggle="modal" data-bs-target="#profileModal" src="{{user.profilePicture}}" alt=""></a>
         </div>
-
+        <div class="d-flex align-items-center fs-3 me-3">{{user.name}} </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <div id="menuToggle">
+                <input id="checkbox" type="checkbox">
+                <label class="toggle" for="checkbox">
+                  <div class="bar bar--top"></div>
+                  <div class="bar bar--middle"></div>
+                  <div class="bar bar--bottom"></div>
+                </label>
+              </div>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -23,11 +30,16 @@
                     <a class="nav-link active menu" aria-current="page" routerLink="/page/addcategory">Add Category 
                     <i class="pi pi-file-plus menu"></i></a>
                 </li>
+                <li class="nav-item" *ngIf="user.role === 'admin'">
+                    <a class="nav-link active menu" aria-current="page" routerLink="/page/category"> Category 
+                    <i class="pi pi-file-plus menu"></i></a>
+                </li>
 
             </ul>
-            <div class="d-flex align-items-center fs-3 me-3">{{user.name}} </div>
-            <button class="btn text-danger mx-3" (click)="logout()" type="button">Logout <i
-                    class="pi pi-user-minus"></i></button>
+            <button class="btn text-danger p-0" (click)="logout()" type="button">Logout <i
+                class="pi pi-user-minus"></i></button>
+                
         </div>
+        
     </div>
 </nav>

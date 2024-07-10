@@ -12,6 +12,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { SharedModule } from '../shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -31,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DropdownModule,
     MegaMenuModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class LayoutModule { }

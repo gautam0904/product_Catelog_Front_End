@@ -48,7 +48,7 @@ export class AddproductComponent {
       this.isedit = params['isedit'] as boolean;
       this.category.get().subscribe({
         next: (res : any) => {
-          this.categories = res.data;
+          this.categories = res;
         },
         error: (error: any) => {
           Swal.fire({

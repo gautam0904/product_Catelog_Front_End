@@ -1,12 +1,21 @@
+.full-height {
+  height: 90vh;
+}
 
-.full-height{
-    height: 100vh;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.category-form{
+  width: 25%;
+}
+
+
+@media (max-width: 768px) {
+  .category-form{
+    width: 100%;
   }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 20px;
-  }
-  
+}

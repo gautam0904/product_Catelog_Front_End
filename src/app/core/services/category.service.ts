@@ -18,10 +18,14 @@ export class CategoryService {
   }
 
   update(categoryData :Icategory){
-    return this.http.put('/category/update' , categoryData)
+    return this.http.put('/category/update' , categoryData , {params : {
+      Id : categoryData._id as string
+    }})
   }
 
   delete(id : string){
-    return this.http.delete('/category/delete/${id}' , {params : {}})
+    return this.http.delete('/category/delete' , {params : {
+      Id : id
+    }})
   }
 }

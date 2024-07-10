@@ -10,3 +10,13 @@
     padding: 20px;
   }
   
+  .product-form{
+    width: 25%;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .product-form{
+      width: 100%;
+    }
+  }

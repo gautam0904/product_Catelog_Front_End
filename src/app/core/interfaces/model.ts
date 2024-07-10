@@ -24,3 +24,12 @@ export interface Icategory {
     name: string,
     description : string,
 }
+
+export  interface IfilterProduct {
+    minprice: string;
+    maxprice: string;
+    maxstock: string;
+    minstock: string;
+    category: string;
+    search : string;
+}

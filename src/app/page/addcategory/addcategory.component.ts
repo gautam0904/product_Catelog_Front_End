@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Icategory } from 'src/app/core/interfaces/model';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { UpdateDataService } from 'src/app/core/services/update-data.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +22,8 @@ export class AddcategoryComponent {
     private category: CategoryService,
     private router: Router,
     private _route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private ud : UpdateDataService
   ) {
 
 
@@ -57,6 +59,7 @@ export class AddcategoryComponent {
       }
     });
     if (this.isedit) {
+      this.clonecategory = this.ud.getCategoryForm();
       this.setInitialValues();
     }
   }
@@ -65,9 +68,11 @@ export class AddcategoryComponent {
   setInitialValues() {
     if (this.clonecategory) {
       this.categoryForm.patchValue({
+        _id : this.clonecategory?._id,
         name: this.clonecategory?.name,
         description: this.clonecategory?.description,
       });
+      this.ud.deleteCategorydata();
     }
 
   }
@@ -96,17 +101,24 @@ export class AddcategoryComponent {
   }
 
   onSubmit() {
-    
-  //   if (this.productForm.valid) {
-  //     this.prod.create(this.productForm.value, this.selectedFile).subscribe({
-  //       next: (resdata: any) => {
-  //         this.messageService.add({ severity: 'success', summary: 'Success', detail: resdata.message });
-  //         this.router.navigate(['/page'])
-  //       },
-  //       error: (res: any) => {
-  //         this.messageService.add({ severity: 'error', summary: 'Error', detail: res.error.message });
-  //       }
-  //     })
+    if (this.categoryForm.valid) {
+      this.category.create(this.categoryForm.value).subscribe({
+        next: (resdata: any) => {
+          Swal.fire({
+            icon: "success",
+            title: "Oops...",
+            text: resdata.message,
+          })
+          this.router.navigate(['/page'])
+        },
+        error: (res: any) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: res.error.message,
+          })
+        }
+      })
     }
   }
-
+}

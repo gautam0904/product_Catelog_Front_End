@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces/model';
+import { Icategory, IUser } from '../interfaces/model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class UpdateDataService {
 
 
   profileForm : IUser | undefined = undefined;
+  categoryForm : Icategory | undefined = undefined;
 
   getProfileForm(){
     return this.profileForm;
@@ -22,6 +23,17 @@ export class UpdateDataService {
 
   deleteprofiledata(){
     this.profileForm = undefined; 
+  }
+  getCategoryForm(){
+     return this.categoryForm as Icategory;
+  }
+
+  setCategoryData(c : Icategory){
+    this.categoryForm = c
+  }
+
+  deleteCategorydata(){
+    this.categoryForm = undefined; 
   }
 
 }

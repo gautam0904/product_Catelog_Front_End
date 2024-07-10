@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Iproduct } from '../interfaces/model'
+import { IfilterProduct, Iproduct } from '../interfaces/model'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -48,5 +48,11 @@ export class ProductService {
 
   delete(id: string){
     return this.http.delete('/product/delete', {params : {Id : id}})
+  }
+
+  getfilter(data : IfilterProduct){
+    return this.http.get('/product/getfiltered' ,{params: {
+      search : data.search
+    }})
   }
 }

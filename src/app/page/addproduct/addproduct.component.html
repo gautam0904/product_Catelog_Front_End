@@ -1,5 +1,5 @@
 <div class="container full-height d-flex justify-content-center align-items-center">
-    <div class="col-md-6 w-25 login-form">
+    <div class="col-md-6 product-form">
         <div class="card">
             <div class="register">
                 <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
@@ -27,11 +27,11 @@
                     </div>
 
                     <select aria-label="Small select example" [ngClass]="{'form-select form-select-sm': true , 'border-danger' : productForm.get('category')?.invalid && productForm.get('category')?.touched}" for="category" formControlName="category" placeholder="Category" required="">
-                        <option [disabled]="true">Category</option>
+                        <option>Category</option>
                         <option *ngFor="let c of categories" value="{{c._id}}">{{c.name}}</option>
                       </select>
                       <div class="text-danger" *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched">
-                        Product Category is required and must contain only number characters.
+                        Product Category is required.
                     </div>
 
                     <input [ngClass]="{'form-control': true , 'border-danger' : productForm.get('stock')?.invalid && productForm.get('stock')?.touched}" for="stock" type="number" formControlName="stock" placeholder="Stock" required="">
