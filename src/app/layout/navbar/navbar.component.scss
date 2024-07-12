@@ -71,3 +71,10 @@ a:hover {
   transform: rotate(-225deg);
   transition-delay: calc(0s + 0.35s * .6);
 }
+
+@media (max-width: 768px) {
+  .profilepic {
+    width: 50px;
+    height: 50px;
+  }
+}
