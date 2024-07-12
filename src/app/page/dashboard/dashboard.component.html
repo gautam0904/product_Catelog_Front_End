@@ -4,7 +4,7 @@
             <form class="form" [formGroup]="searchForm">
 
                 <input type="text" formControlName="search" class="search__input" placeholder="Type your text">
-                <button class="search__button" (click)="search()">
+                <button class="search__button bg-transparent" (click)="search()">
                     <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
                         <g>
                             <path
@@ -34,14 +34,23 @@
         <div class="title fs-4 fw-5">
             Stock : {{p.stock}}
         </div>
-        <div class="description">
+        <div class="description text-truncate">
             {{p.description}}
         </div>
-        <div class="d-flex my-2" *ngIf="role === 'admin'">
-            <a [routerLink]="['/page/addproduct']" [queryParams]="{isedit : true , product : p | json}"><button
-                    class="btn btn-warning me-2">Edit</button></a>
-            <button class="btn btn-danger ms-2" (click)="ondelete(p)">Delete</button>
+
+        <div class="d-flex mt-2">
+            <!-- <button class="btn"><i class="fa-solid text-warning fa-cart-plus fa-2x"></i>Add to Cart</button> -->
+            <button class="btn"><i class="fa-solid  fa-circle-info fa-2x"></i>View Details</button>
+            <button class="btn "><i class="fa-solid text-primary fa-cart-shopping fa-2x"></i>Buy Now</button>
+
         </div>
+
+        <div class="d-flex my-2 " *ngIf="role === 'admin'">
+            <a [routerLink]="['/page/addproduct']" [queryParams]="{isedit : true , product : p | json}"><button class="btn-lg btn button"> <i  class="text-primary fa-solid fa-2x fa-pen-to-square"></i> </button></a>
+            <button class="btn" (click)="ondelete(p)"><i class="text-danger fa-solid fa-2x fa-trash-can"></i></button>
+        </div>
+
+
     </div>
 
 </div>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/core/interfaces/model';
 import { ProductService } from 'src/app/core/services/product.service';
+import { SharedService } from 'src/app/core/services/shared.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router : Router ,
      private fb : FormBuilder,
-     private prod : ProductService
+     private prod : ProductService,
+     private sharedService : SharedService
     ){
    
   }
@@ -29,7 +31,9 @@ user !: IUser
    this.user = user;
   }
 
-  
+  viewSidebar(value: boolean) {
+    this.sharedService.toggleSidebar(value);
+  }
 
   logout() {
     localStorage.clear();

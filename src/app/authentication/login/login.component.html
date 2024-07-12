@@ -11,7 +11,7 @@
 
                     <input [ngClass]="{'form-control' : true, 'border-danger' : loginform.controls['email'].invalid && loginform.controls['email'].touched }" type="password" formControlName="password" placeholder="Password" required="">
 
-                    <div class="text-danger" *ngIf="loginform.controls['email'].invalid && loginform.controls['email'].touched"> Please provide  password.</div>
+                    <div class="text-danger" *ngIf="loginform.controls['password'].invalid && loginform.controls['password'].touched"> Please provide  password.</div>
 
                     <a class="text-decoration-none" routerLink="/auth/signup">Create an account</a>
 

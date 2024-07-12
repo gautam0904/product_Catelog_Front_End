@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -23,7 +23,6 @@ export class SignupComponent implements AfterViewInit {
   constructor(private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private messageService: MessageService,
     private ud: UpdateDataService,
     private _route: ActivatedRoute,
     private cdr: ChangeDetectorRef
