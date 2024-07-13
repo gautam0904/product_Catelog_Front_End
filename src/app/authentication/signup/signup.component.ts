@@ -19,6 +19,7 @@ export class SignupComponent implements AfterViewInit {
   signupForm!: FormGroup;
   selectedFile!: File;
   selectedRole!: string;
+  loading : boolean = false;
 
   constructor(private fb: FormBuilder,
     private auth: AuthService,
@@ -89,6 +90,7 @@ export class SignupComponent implements AfterViewInit {
   }
 
   onupdate() {
+    this.loading=true;
     this.auth.update(this.signupForm.value, this.selectedFile).subscribe({
       next: (resdata: any) => {
         Swal.fire({
@@ -100,6 +102,7 @@ export class SignupComponent implements AfterViewInit {
         localStorage.clear();
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(resdata));
+        this.loading = false;
         this.router.navigate(['/page'])
       },
       error: (res: any) => {
@@ -108,12 +111,14 @@ export class SignupComponent implements AfterViewInit {
           title: "Oops...",
           text: res.error.message,
         });
+        this.loading = false;
       }
 
     })
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.signupForm.valid) {
       this.auth.signup(this.signupForm.value, this.selectedFile).subscribe({
         next: (resdata: any) => {
@@ -122,6 +127,7 @@ export class SignupComponent implements AfterViewInit {
             title: "Oops...",
             text: resdata.message,
           });
+          this.loading = false;
           this.router.navigate(['/auth'])
         },
         error: (res: any) => {
@@ -130,6 +136,7 @@ export class SignupComponent implements AfterViewInit {
             title: "Oops...",
             text: res.error.message,
           });
+          this.loading = false;
         }
       })
     }

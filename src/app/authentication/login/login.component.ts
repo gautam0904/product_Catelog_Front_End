@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   loginform ! : FormGroup;
-
+  loading : boolean = false;
 
   constructor(private fb : FormBuilder , private auth : AuthService , private router : Router , private messageService: MessageService) {}
 
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
   onsubmit():void{    
     if (this.loginform.valid) {
+      this.loading=true;
       this.auth.login(this.loginform.value).subscribe({
         next : (resdata : any) => {
           if (resdata.data) {
@@ -36,7 +37,6 @@ export class LoginComponent implements OnInit {
             localStorage.clear();
             localStorage.setItem('token',resdata.data.token);
             localStorage.setItem('user',JSON.stringify(resdata.data.user));
-            // localStorage.setItem('user',JSON.stringify(resdata.data.user));
             this.loginform.reset();
             this.router.navigate(['/'])
           }

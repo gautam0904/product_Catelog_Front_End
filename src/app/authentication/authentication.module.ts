@@ -5,7 +5,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'primeng/api';
+import {  SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { SharedModule } from 'primeng/api';
     ReactiveFormsModule,
     ToastModule,
     SharedModule
-  ],
+],
   exports:[
     SignupComponent
   ]

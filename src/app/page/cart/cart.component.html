@@ -1,1 +1,57 @@
-<p>cart works!</p>
+<div class="row">
+    <div class="col-lg-6">
+        <div *ngIf="product" class="card p-3">
+
+            <div class="image">
+                <a href="{{product.productimage}}"> <img class="img img-fluid" style="width: 50%; aspect-ratio: 1/1;"
+                        src="{{product.productimage}}" alt=""></a>
+            </div>
+
+            <div class="title fs-2 fw-1">
+                {{product.name}}
+            </div>
+            <div class="description">
+                {{product.description}}
+            </div>
+            <div class="title fs-4 fw-5">
+                Quentity : <button class="btn rounded-circle border-2"
+                (click)="minus()"><i class="fa-solid fa-minus"></i></button>{{quantity}}<button class="btn rounded-circle border-2" (click)="plus()"><i
+                    class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="title fs-4 fw-5">
+                Prize : {{buyprice | currency : 'INR'}}
+            </div>
+
+            <div class="d-flex justify-content-between mt-2">
+                <button class="btn rounded border" (click)="getcoupon()">Get Coupons   <i
+                        class="fa-solid fa-ticket"></i></button>
+            </div>
+
+        </div>
+
+        <div *ngIf="!product">
+            <div class="fs-4">
+                You not select any product
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="coupon" *ngFor="let c of coupons">
+            <div class="punch-hole left"></div>
+            <div class="punch-hole right"></div>
+            <div class="zigzag-border left"></div>
+            <div class="zigzag-border right"></div>
+            <div class="text">
+                {{c.code}}
+            </div>
+            <div class="fs-6">
+                {{c.type}}
+            </div>
+            <p>{{c.discountValue}}</p>
+
+            <button >Apply <i class="fa-solid fa-road-circle-check"></i></button>
+        </div>
+    </div>
+
+</div>

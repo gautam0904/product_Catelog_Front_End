@@ -42,7 +42,7 @@
             <!-- <button class="btn"><i class="fa-solid text-warning fa-cart-plus fa-2x"></i>Add to Cart</button> -->
             <a *ngIf="role === 'admin'" [routerLink]="['/page/addproduct']" [queryParams]="{isedit : true , product : p | json}"><button class="btn-lg btn button"> <i  class="text-primary fa-solid fa-2x fa-pen-to-square"></i> </button></a>
             <button class="btn"><i class="fa-solid  fa-circle-info fa-2x"></i></button>
-            <button class="btn "><i class="fa-solid fa-bag-shopping text-primary fa-2x"></i></button>
+            <button class="btn" (click)="oncart(p)"><i class="fa-solid fa-bag-shopping text-primary fa-2x"></i></button>
             <button *ngIf="role === 'admin'" class="btn" (click)="ondelete(p)"><i class="text-danger fa-solid fa-2x fa-trash-can"></i></button>
         </div>
 

@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { CategoryComponent } from './category/category.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   },{
     path : 'category',
     component : CategoryComponent
+  },
+  {
+    path : 'cart',
+    component : CartComponent
   }
 ];
 

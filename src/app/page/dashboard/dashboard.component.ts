@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/core/interfaces/model';
 import { ProductService } from 'src/app/core/services/product.service';
+import { SharedService } from 'src/app/core/services/shared.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,6 +20,8 @@ export class DashboardComponent {
     private product: ProductService,
     private fb: FormBuilder,
     private prod: ProductService,
+    private router: Router,
+    private sharedService: SharedService
   ) {
     this.role =  JSON.parse(localStorage.getItem('user') as string)?.role || "";
     this.searchForm = this.fb.group({
@@ -85,5 +89,10 @@ export class DashboardComponent {
         })
       }
     })
+  }
+
+  oncart(p:Iproduct){
+    this.sharedService.setproductData(p);
+    this.router.navigate(['page/cart'])
   }
 }
